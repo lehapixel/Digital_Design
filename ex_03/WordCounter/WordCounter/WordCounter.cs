@@ -9,7 +9,7 @@ namespace WordCounter
     {
         static private Dictionary<string, int> Count(string[] text)
         {
-            Dictionary<string, int> keyValuePairs = new Dictionary<string, int>(); ;
+            Dictionary<string, int> keyValuePairs = new Dictionary<string, int>();
             foreach (var line in text)
             {
                 var words = line.ToLower().Split(new char[] { ' ', ',', '.', '!', '?', ':', ';', '-', '–', '+', '=', '"', '«', '»', '[', ']', '(', ')', '/', '\\', '|', '~', '@', '$', '%', '^', '&', '*', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' }, StringSplitOptions.RemoveEmptyEntries);
