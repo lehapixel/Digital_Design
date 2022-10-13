@@ -11,7 +11,7 @@ namespace MainProgram
     {
         static void Main()
         {
-            string pathToFile = "D:/Projects/C#/Digital_Design/ex_03/Resources/WarAndPeaceVolume1.txt";
+            string pathToFile = "..\\..\\..\\..\\..\\Resources\\WarAndPeaceVolume1.txt";
             string[] text = File.ReadAllLines(pathToFile);
 
             Stopwatch stopWatchCount = new Stopwatch();
