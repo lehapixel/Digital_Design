@@ -9,7 +9,7 @@ namespace MainProgram
     {
         static void Main()
         {         
-            string pathToFile = "D:/Projects/C#/Digital_Design/ex_02/Resources/WarAndPeaceVolume1.txt";
+            string pathToFile = "..\\..\\..\\..\\..\\Resources\\WarAndPeaceVolume1.txt";
             string[] text = File.ReadAllLines(pathToFile);
 
             var type = typeof(WordCounter.WordCounter).Assembly.GetTypes().First(x => x.Name == "WordCounter");
