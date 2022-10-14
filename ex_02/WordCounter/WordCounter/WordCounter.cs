@@ -5,25 +5,26 @@ namespace WordCounter
 {
     public class WordCounter
     {
+        static private char[] exceptionalSymbols = { ' ', ',', '.', '!', '?', ':', ';', '-', '–', '+', '=', '"', '«', '»', '[', ']', '(', ')', '/', '\\', '|', '~', '@', '$', '%', '^', '&', '*', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
         static private Dictionary<string, int> Count(ref string[] text)
         {
-            Dictionary<string, int> keyValuePairs = new Dictionary<string, int>();
+            Dictionary<string, int> dictionary = new Dictionary<string, int>();
             foreach (var line in text)
             {
-                var words = line.ToLower().Split(new char[] { ' ', ',', '.', '!', '?', ':', ';', '-', '–', '+', '=', '"', '«', '»', '[', ']', '(', ')', '/', '\\', '|', '~', '@', '$', '%', '^', '&', '*', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' }, StringSplitOptions.RemoveEmptyEntries);
+                var words = line.ToLower().Split(exceptionalSymbols, StringSplitOptions.RemoveEmptyEntries);
                 foreach (var word in words)
                 {
-                    if (!keyValuePairs.ContainsKey(word))
+                    if (!dictionary.ContainsKey(word))
                     {
-                        keyValuePairs.Add(word, 1);
+                        dictionary.Add(word, 1);
                     }
                     else
                     {
-                        keyValuePairs[word]++;
+                        dictionary[word]++;
                     }
                 }
             }
-            return keyValuePairs;
+            return dictionary;
         }
     }
 }
