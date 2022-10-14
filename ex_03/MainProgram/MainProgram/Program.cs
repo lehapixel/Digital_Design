@@ -24,7 +24,7 @@ namespace MainProgram
             stopWatchCount.Start();
             dictionary = method.Invoke(null, new object[] { text }) as Dictionary<string, int>;
             stopWatchCount.Stop();
-            using (StreamWriter file = new("wordCounter.txt"))
+            using (StreamWriter file = new("WordCount.txt"))
             {
                 foreach (var row in dictionary.OrderByDescending(_ => _.Value))
                 {
@@ -33,7 +33,7 @@ namespace MainProgram
             }
             long timeSpan = stopWatchCount.ElapsedMilliseconds;
             Console.WriteLine("Count Method Run Time: " + timeSpan + " ms");
-            Console.WriteLine("File \"wordCounter.txt\" has been created! \n");
+            Console.WriteLine("File \"WordCount.txt\" has been created! \n");
 
             //Multithreaded Count
             method = type.GetMethod("MultithreadedCount", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
@@ -41,7 +41,7 @@ namespace MainProgram
             stopWatchCount.Restart();
             concurrentDictionary = method.Invoke(null, new object[] { text }) as ConcurrentDictionary<string, int>;
             stopWatchCount.Stop();
-            using (StreamWriter file = new("multithreadedWordCounter.txt"))
+            using (StreamWriter file = new("MultithreadedWordCount.txt"))
             {
                 foreach (var row in concurrentDictionary.OrderByDescending(_ => _.Value))
                 {
@@ -50,7 +50,7 @@ namespace MainProgram
             }
             timeSpan = stopWatchCount.ElapsedMilliseconds;
             Console.WriteLine("MultithreadedCount Method Run Time: " + timeSpan + " ms");
-            Console.WriteLine("File \"multithreadedwordCounter.txt\" has been created!");
+            Console.WriteLine("File \"MultithreadedWordCount.txt\" has been created!");
 
             Console.ReadKey();
         }
