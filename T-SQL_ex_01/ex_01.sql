@@ -56,3 +56,24 @@ ORDER BY SalesOrderHeader.OrderDate DESC
 Поле имя выводит в формате 'Фамилия И.О.'
 Упорядочить по уровню в иерархии от директора вниз к сотрудникам
 Внутри одного уровня иерархии упорядочить по фамилии руководителя, затем по фамилии сотрудника */
+
+;WITH Leaders AS (SELECT Employee.BusinessEntityID, Employee.OrganizationLevel AS [Leaders Organization Level], vEmployeeDepartment.Department [Department Leader], 
+	vEmployee.LastName AS [Leader Last Name], vEmployee.FirstName AS [Leader First Name], vEmployee.MiddleName AS [Leader Middle Name], 
+	Employee.HireDate AS [Leader employment date], Employee.BirthDate AS [Leader Birth Date]
+FROM HumanResources.vEmployee JOIN HumanResources.Employee ON vEmployee.BusinessEntityID=Employee.BusinessEntityID
+								JOIN HumanResources.vEmployeeDepartment ON Employee.BusinessEntityID=vEmployeeDepartment.BusinessEntityID
+WHERE Employee.OrganizationLevel IS NOT NULL
+GROUP BY vEmployeeDepartment.Department,Employee.OrganizationLevel, Employee.BusinessEntityID, vEmployee.LastName, vEmployee.FirstName,vEmployee.MiddleName, Employee.HireDate, Employee.BirthDate
+HAVING Employee.OrganizationLevel = 1)
+
+SELECT CONCAT(Leaders.[Leader Last Name],' ',SUBSTRING(Leaders.[Leader First Name], 1, 1), '.', SUBSTRING(Leaders.[Leader Middle Name], 1, 1)) AS [Leader initials], Leaders.[Leader employment date], Leaders.[Leader Birth Date],
+	CONCAT (vEmployee.LastName,' ',SUBSTRING(vEmployee.FirstName, 1, 1), '.', SUBSTRING(vEmployee.MiddleName, 1, 1)) AS [Employee initials], Employee.HireDate AS [Employee employment date], Employee.BirthDate AS [Employee Birth Date]
+FROM HumanResources.Employee RIGHT JOIN  HumanResources.vEmployee ON Employee.BusinessEntityID = vEmployee.BusinessEntityID
+								RIGHT JOIN HumanResources.vEmployeeDepartment ON Employee.BusinessEntityID=vEmployeeDepartment.BusinessEntityID
+									INNER JOIN Leaders ON vEmployeeDepartment.Department = Leaders.[Department Leader]
+
+WHERE CONCAT (vEmployee.LastName,' ',SUBSTRING(vEmployee.FirstName, 1, 1), '.', SUBSTRING(vEmployee.MiddleName, 1, 1)) != CONCAT(Leaders.[Leader Last Name],' ',SUBSTRING(Leaders.[Leader First Name], 1, 1), '.', SUBSTRING(Leaders.[Leader Middle Name], 1, 1)) 
+AND Leaders.[Leader employment date]>Employee.HireDate AND Leaders.[Leader Birth Date]>Employee.BirthDate
+GROUP BY vEmployeeDepartment.Department, Leaders.[Leaders Organization Level], Leaders.[Leader Last Name], Leaders.[Leader First Name],Leaders.[Leader Middle Name], Leaders.[Leader employment date], Leaders.[Leader Birth Date], 
+vEmployee.LastName, vEmployee.FirstName, vEmployee.MiddleName, Employee.HireDate, Employee.BirthDate
+ORDER BY vEmployeeDepartment.Department ASC, Leaders.[Leaders Organization Level] ASC, Leaders.[Leader Last Name] ASC, vEmployee.LastName ASC
