@@ -1,5 +1,4 @@
-﻿
-CREATE TABLE Сustomers
+﻿CREATE TABLE Сustomers
 (
 	FullName nvarchar(100) PRIMARY KEY NOT NULL,
 	Gender nvarchar(1) NOT NULL 
