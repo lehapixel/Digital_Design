@@ -75,3 +75,35 @@ WHERE Leaders.[Leader employment date]>Employee.HireDate AND Leaders.[Leader Bir
 GROUP BY Leaders.[Leaders Organization Level], Leaders.[Leader Last Name], Leaders.[Leader First Name],Leaders.[Leader Middle Name], Leaders.[Leader employment date], Leaders.[Leader Birth Date], 
 vEmployee.LastName, vEmployee.FirstName, vEmployee.MiddleName, Employee.HireDate, Employee.BirthDate
 ORDER BY Leaders.[Leaders Organization Level] ASC, Leaders.[Leader Last Name] ASC, vEmployee.LastName ASC
+
+/* Задача 7
+Написать хранимую процедуру, с тремя параметрами и результирующим набором данных 
+входные параметры - две даты, с и по 
+выходной параметр - количество найденных записей 
+Результирующий набор содержит записи всех холостых мужчин-сотрудников, родившихся в диапазон указанных дат */
+
+CREATE PROCEDURE HumanResources.SingleMenInAgeRange (
+	@TimeStart date,
+	@TimeEnd date,
+	@CountFoundEmployees int OUTPUT
+)
+AS
+BEGIN
+	SELECT @CountFoundEmployees = COUNT(Employee.BusinessEntityID) 
+	FROM  HumanResources.Employee 
+	WHERE Employee.Gender = 'M' AND 
+		Employee.MaritalStatus = 'S' AND 
+			Employee.BirthDate >= @TimeStart AND
+			Employee.BirthDate <= @TimeEnd
+	SELECT Employee.BusinessEntityID, Employee.NationalIDNumber, Employee.LoginID, 
+		Employee.OrganizationNode, Employee.OrganizationLevel,Employee.JobTitle,Employee.BirthDate,Employee.MaritalStatus,Employee.Gender,Employee.HireDate, 
+		Employee.SalariedFlag,Employee.VacationHours,Employee.SickLeaveHours,Employee.CurrentFlag,Employee.rowguid,Employee.ModifiedDate
+		FROM  HumanResources.Employee 
+	WHERE Employee.Gender = 'M' AND 
+		Employee.MaritalStatus = 'S' AND 
+			Employee.BirthDate >= @TimeStart AND
+			Employee.BirthDate <= @TimeEnd
+	GROUP BY Employee.BusinessEntityID, Employee.NationalIDNumber, Employee.LoginID, 
+		Employee.OrganizationNode, Employee.OrganizationLevel,Employee.JobTitle,Employee.BirthDate,Employee.MaritalStatus,Employee.Gender,Employee.HireDate, 
+		Employee.SalariedFlag,Employee.VacationHours,Employee.SickLeaveHours,Employee.CurrentFlag,Employee.rowguid,Employee.ModifiedDate;
+END
