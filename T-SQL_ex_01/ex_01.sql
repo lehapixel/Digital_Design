@@ -74,9 +74,9 @@ FROM HumanResources.Employee RIGHT JOIN  HumanResources.vEmployee ON Employee.Bu
 
 WHERE CONCAT (vEmployee.LastName,' ',SUBSTRING(vEmployee.FirstName, 1, 1), '.', SUBSTRING(vEmployee.MiddleName, 1, 1)) != CONCAT(Leaders.[Leader Last Name],' ',SUBSTRING(Leaders.[Leader First Name], 1, 1), '.', SUBSTRING(Leaders.[Leader Middle Name], 1, 1)) 
 AND Leaders.[Leader employment date]>Employee.HireDate AND Leaders.[Leader Birth Date]>Employee.BirthDate
-GROUP BY vEmployeeDepartment.Department, Employee.OrganizationLevel, Leaders.[Leader Last Name], Leaders.[Leader First Name],Leaders.[Leader Middle Name], Leaders.[Leader employment date], Leaders.[Leader Birth Date], 
+GROUP BY vEmployeeDepartment.Department, Leaders.[Leaders Organization Level], Leaders.[Leader Last Name], Leaders.[Leader First Name],Leaders.[Leader Middle Name], Leaders.[Leader employment date], Leaders.[Leader Birth Date], 
 vEmployee.LastName, vEmployee.FirstName, vEmployee.MiddleName, Employee.HireDate, Employee.BirthDate
-ORDER BY Employee.OrganizationLevel DESC, Leaders.[Leader Last Name] ASC, vEmployee.LastName ASC
+ORDER BY vEmployeeDepartment.Department ASC, Leaders.[Leaders Organization Level] ASC, Leaders.[Leader Last Name] ASC, vEmployee.LastName ASC
 
 /* Задача 7
 Написать хранимую процедуру, с тремя параметрами и результирующим набором данных 
