@@ -12,7 +12,7 @@ ORDER BY YEAR(OrderDate),Month(OrderDate)
 Приоритет определяется как количество покупателей в городе
 В городе не должно быть магазина */
 
-SELECT City AS [City], COUNT(DISTINCT BusinessEntityID) AS [Priority]
+SELECT TOP 10 City AS [City], COUNT(DISTINCT BusinessEntityID) AS [Priority]
 FROM Sales.vIndividualCustomer
 WHERE City NOT IN (SELECT City FROM Sales.vStoreWithAddresses)
 GROUP BY City
@@ -62,19 +62,21 @@ ORDER BY SalesOrderHeader.OrderDate DESC
 	Employee.HireDate AS [Leader employment date], Employee.BirthDate AS [Leader Birth Date]
 FROM HumanResources.vEmployee JOIN HumanResources.Employee ON vEmployee.BusinessEntityID=Employee.BusinessEntityID
 								JOIN HumanResources.vEmployeeDepartment ON Employee.BusinessEntityID=vEmployeeDepartment.BusinessEntityID
-WHERE Employee.OrganizationLevel < 4
-GROUP BY vEmployeeDepartment.Department,Employee.OrganizationLevel, Employee.BusinessEntityID, vEmployee.LastName, vEmployee.FirstName,vEmployee.MiddleName, Employee.HireDate, Employee.BirthDate)
+WHERE Employee.OrganizationLevel IS NOT NULL
+GROUP BY vEmployeeDepartment.Department,Employee.OrganizationLevel, Employee.BusinessEntityID, vEmployee.LastName, vEmployee.FirstName,vEmployee.MiddleName, Employee.HireDate, Employee.BirthDate
+HAVING Employee.OrganizationLevel = 1)
 
 SELECT CONCAT(Leaders.[Leader Last Name],' ',SUBSTRING(Leaders.[Leader First Name], 1, 1), '.', SUBSTRING(Leaders.[Leader Middle Name], 1, 1)) AS [Leader initials], Leaders.[Leader employment date], Leaders.[Leader Birth Date],
 	CONCAT (vEmployee.LastName,' ',SUBSTRING(vEmployee.FirstName, 1, 1), '.', SUBSTRING(vEmployee.MiddleName, 1, 1)) AS [Employee initials], Employee.HireDate AS [Employee employment date], Employee.BirthDate AS [Employee Birth Date]
 FROM HumanResources.Employee RIGHT JOIN  HumanResources.vEmployee ON Employee.BusinessEntityID = vEmployee.BusinessEntityID
 								RIGHT JOIN HumanResources.vEmployeeDepartment ON Employee.BusinessEntityID=vEmployeeDepartment.BusinessEntityID
-									RIGHT JOIN Leaders ON vEmployeeDepartment.Department = Leaders.[Department Leader] AND Leaders.[Leaders Organization Level]=Employee.OrganizationLevel-1
+									INNER JOIN Leaders ON vEmployeeDepartment.Department = Leaders.[Department Leader]
 
-WHERE Leaders.[Leader employment date]>Employee.HireDate AND Leaders.[Leader Birth Date]>Employee.BirthDate
-GROUP BY Leaders.[Leaders Organization Level], Leaders.[Leader Last Name], Leaders.[Leader First Name],Leaders.[Leader Middle Name], Leaders.[Leader employment date], Leaders.[Leader Birth Date], 
+WHERE CONCAT (vEmployee.LastName,' ',SUBSTRING(vEmployee.FirstName, 1, 1), '.', SUBSTRING(vEmployee.MiddleName, 1, 1)) != CONCAT(Leaders.[Leader Last Name],' ',SUBSTRING(Leaders.[Leader First Name], 1, 1), '.', SUBSTRING(Leaders.[Leader Middle Name], 1, 1)) 
+AND Leaders.[Leader employment date]>Employee.HireDate AND Leaders.[Leader Birth Date]>Employee.BirthDate
+GROUP BY vEmployeeDepartment.Department, Employee.OrganizationLevel, Leaders.[Leader Last Name], Leaders.[Leader First Name],Leaders.[Leader Middle Name], Leaders.[Leader employment date], Leaders.[Leader Birth Date], 
 vEmployee.LastName, vEmployee.FirstName, vEmployee.MiddleName, Employee.HireDate, Employee.BirthDate
-ORDER BY Leaders.[Leaders Organization Level] ASC, Leaders.[Leader Last Name] ASC, vEmployee.LastName ASC
+ORDER BY Employee.OrganizationLevel DESC, Leaders.[Leader Last Name] ASC, vEmployee.LastName ASC
 
 /* Задача 7
 Написать хранимую процедуру, с тремя параметрами и результирующим набором данных 
