@@ -53,9 +53,10 @@ BEGIN
   SET @Counter += 1;
 END;
 
-/* Созданы покрывающие индексы для таблицы [Marketing.Prospect](атрибуты: LastName, FirstName, ProspectID, MiddleName, CellPhoneNumber, 
-                                                                          HomePhoneNumber, WorkPhoneNumber, Demographics, LatestContact, EmailAddress)
-										 и [Marketing.Salesperson](атрибуты: LastName, FirstName)
+/* Созданы покрывающие индексы для таблиц: 
+   [Marketing.Prospect](атрибуты: LastName, FirstName, ProspectID, MiddleName, CellPhoneNumber, HomePhoneNumber, WorkPhoneNumber, Demographics, LatestContact, EmailAddress)
+   [Marketing.Salesperson](атрибуты: LastName, FirstName)
+  
    Удалена сортировка по атрибутам LastName и FirstName таблицы [Marketing.Prospect], т.к. она производится при записи в индекс. 
    Так же руки тянутся удалить ужасный цикл. Если необходимо выводить одно и то же 350 раз, 
    то возможно стоит оформить данный код в пользовательскую процедуру. */
@@ -84,10 +85,8 @@ GROUP BY c.CategoryName,
 	pm.ProductModel
 HAVING COUNT(p.ProductID) > 1
 
-/*
-Созданы покрывающие индексы для таблиц: [Marketing.Product](атрибуты: ProductModelID, ProductID, SubcategoryID)
-									    [Marketing.ProductModel](атрибуты: ProductModelID, ProductModel)
-										[Marketing.Subcategory](атрибуты: CategoryID, SubcategoryName)
-										[Marketing.Category](атрибуты: CategoryID, CategoryName)
-
-*/
+/* Созданы покрывающие индексы для таблиц: 
+   [Marketing.Product](атрибуты: ProductModelID, ProductID, SubcategoryID)
+   [Marketing.ProductModel](атрибуты: ProductModelID, ProductModel)
+   [Marketing.Subcategory](атрибуты: CategoryID, SubcategoryName)
+   [Marketing.Category](атрибуты: CategoryID, CategoryName) */
