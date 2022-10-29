@@ -1,6 +1,7 @@
 ﻿CREATE TABLE Сustomers
 (
-	FullName nvarchar(100) PRIMARY KEY NOT NULL,
+	СustomerID int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	FullName nvarchar(100) NOT NULL,
 	Gender nvarchar(1) NOT NULL 
 )
 
@@ -13,22 +14,31 @@ CREATE TABLE Products
 
 CREATE TABLE Addresses
 (
-	AddressLine nchar(150) PRIMARY KEY NOT NULL,
+	AddressesID int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	AddressLine nchar(150) NOT NULL,
 	City nvarchar(50) NOT NULL, 
 )
 
-CREATE TABLE Orders
+CREATE TABLE OrderDetail
 (
 	OrderID int IDENTITY(1,1) PRIMARY KEY NOT NULL,
-	FullNameСustomer nvarchar(100) NOT NULL,
 	DateOrder date NOT NULL,
-	OrderAddress nchar(150) NOT NULL,
-	ProductName nvarchar(100),
-	Qty nvarchar(4000) NOT NULL, 
-	FOREIGN KEY (FullNameСustomer) REFERENCES Сustomers(FullName),
-	FOREIGN KEY (OrderAddress) REFERENCES Addresses(AddressLine),
-	FOREIGN KEY (ProductName) REFERENCES Products(ProductName),
+	AddressesID int NOT NULL,
+	СustomerID int NOT NULL,
+	FOREIGN KEY (AddressesID) REFERENCES Addresses(AddressesID),
+	FOREIGN KEY (СustomerID) REFERENCES Сustomers(СustomerID)
 )
+
+CREATE TABLE ProductOrder
+(
+	ProductOrderID int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	ProductName nvarchar(100),
+	Qty nvarchar(4000) NOT NULL,
+	OrderID int NOT NULL,
+	FOREIGN KEY (OrderID) REFERENCES OrderDetail(OrderID),		
+	FOREIGN KEY (ProductName) REFERENCES Products(ProductName)
+)
+
 
 --[Сustomers]
 INSERT INTO Сustomers(FullName, Gender)
@@ -68,22 +78,35 @@ INSERT INTO Addresses(AddressLine, City)
 INSERT INTO Addresses(AddressLine, City)
 	VALUES ('пл. Александра Невского д.2', 'СПб');
 
---[Sales.Order]
-INSERT INTO Orders(FullNameСustomer, DateOrder, OrderAddress, ProductName, Qty)
-	VALUES ('Петр Романов', '1703.05.27', 'Сенатская площадь д.1', 'Рама оконная', 1);
-INSERT INTO Orders(FullNameСustomer, DateOrder, OrderAddress, ProductName, Qty)
-	VALUES ('Софи́я Авгу́ста Фредери́ка А́нгальт-Це́рбстская', '1762.06.28', 'площадь Островского д.1', 'Платье бальное', 999);
-INSERT INTO Orders(FullNameСustomer, DateOrder, OrderAddress, ProductName, Qty)
-	VALUES ('Александр Рюрикович', '1242.04.05', 'Сенатская площадь д.1', 'Грудка куриная', 5);
-INSERT INTO Orders(FullNameСustomer, DateOrder, OrderAddress, ProductName, Qty)
-	VALUES ('Александр Рюрикович', '1242.04.06', 'Сенатская площадь д.1', 'Салат', 5);
-INSERT INTO Orders(FullNameСustomer, DateOrder, OrderAddress, ProductName, Qty)
-	VALUES ('Петр Романов', '1704.11.05', 'Сенатская площадь д.1', 'Топор', 1);
-INSERT INTO Orders(FullNameСustomer, DateOrder, OrderAddress, ProductName, Qty)
-	VALUES ('Петр Романов', '1704.11.05', 'Сенатская площадь д.1', 'Пила', 1);
-INSERT INTO Orders(FullNameСustomer, DateOrder, OrderAddress, ProductName, Qty)
-	VALUES ('Петр Романов', '1704.11.05', 'Сенатская площадь д.1', 'Доска', 200);
-INSERT INTO Orders(FullNameСustomer, DateOrder, OrderAddress, ProductName, Qty)
-	VALUES ('Петр Романов', '1704.11.05', 'Сенатская площадь д.1', 'Брус', 20);
-INSERT INTO Orders(FullNameСustomer, DateOrder, OrderAddress, ProductName, Qty)
-	VALUES ('Петр Романов', '1704.11.05', 'Сенатская площадь д.1', 'Парусина', 100);
+
+--[OrderDetail]--
+INSERT INTO OrderDetail(DateOrder, AddressesID, СustomerID)
+	VALUES ('1703.05.27', 1, 1)
+INSERT INTO OrderDetail(DateOrder, AddressesID, СustomerID)
+	VALUES ('1762.06.28', 2, 2)
+INSERT INTO OrderDetail(DateOrder, AddressesID, СustomerID)
+	VALUES ('1242.04.05', 3, 3)
+INSERT INTO OrderDetail(DateOrder, AddressesID, СustomerID)
+	VALUES ('1242.04.06', 4, 3)
+INSERT INTO OrderDetail(DateOrder, AddressesID, СustomerID)
+	VALUES ('1704.11.05', 1, 1)
+
+--[ProductOrder]
+INSERT INTO ProductOrder(ProductName, Qty, OrderID)
+	VALUES ('Рама оконная', 1, 1);
+INSERT INTO ProductOrder(ProductName, Qty, OrderID)
+	VALUES ('Платье бальное', 999, 2);
+INSERT INTO ProductOrder(ProductName, Qty, OrderID)
+	VALUES ('Грудка куриная', 5, 3);
+INSERT INTO ProductOrder(ProductName, Qty, OrderID)
+	VALUES ('Салат', 5, 4);
+INSERT INTO ProductOrder(ProductName, Qty, OrderID)
+	VALUES ('Топор', 1, 5);
+INSERT INTO ProductOrder(ProductName, Qty, OrderID)
+	VALUES ('Пила', 1, 5);
+INSERT INTO ProductOrder(ProductName, Qty, OrderID)
+	VALUES ('Доска', 200, 5);
+INSERT INTO ProductOrder(ProductName, Qty, OrderID)
+	VALUES ('Брус', 20, 5);
+INSERT INTO ProductOrder(ProductName, Qty, OrderID)
+	VALUES ('Парусина', 100, 5);
