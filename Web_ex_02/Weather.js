@@ -2,7 +2,8 @@ function getWeather() {
 	let city = (document.getElementById("city").value).toLowerCase();
 	if (city == "") {
 	alert("Введите название города (латиница)");
-	} else {
+	} 
+	else {
 		let apiKey = '6e108f31f8c7b87f112ff4a50417dcec';
 		var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + ',RU&appid=' + apiKey + '&units=metric';
 		console.log(url);
