@@ -13,7 +13,8 @@ function getWeather() {
 			if (request.status >= 200 && request.status < 400) {
 				var data = JSON.parse(request.responseText);
 				console.log(data);
-			} else {
+			} 
+			else {
 			console.log('Сервер вернул ошибку');
 			}
 		};
