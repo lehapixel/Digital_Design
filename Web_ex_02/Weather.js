@@ -1,7 +1,7 @@
 function getWeather() {
 	let city = (document.getElementById("city").value).toLowerCase();
 	if (city == "") {
-	   alert("Введите название города (латиница)");
+		alert("Введите название города (латиница)");
 	} 
 	else {
 		let apiKey = '6e108f31f8c7b87f112ff4a50417dcec';
@@ -15,7 +15,7 @@ function getWeather() {
 				console.log(data);
 			} 
 			else {
-			   console.log('Сервер вернул ошибку');
+				console.log('Сервер вернул ошибку');
 			}
 		};
 		request.onerror = function () {
