@@ -7,7 +7,7 @@ body{
 .border {
 	border: 3px solid #FFCC00;
 }
-		
+	
 .mysite{
 	display: flex;
 	flex-direction: column;
@@ -75,63 +75,63 @@ body{
 }
 
 .card {
-   width: 100%;
-   max-width: 350px;
-   border: 3px solid #FFCC00;
-   padding: 15px;
-   display: grid;
-   place-items: center;
-   justify-content: center;
+	width: 100%;
+	max-width: 350px;
+	border: 3px solid #FFCC00;
+	padding: 15px;
+	display: grid;
+	place-items: center;
+	justify-content: center;
 }
 
 .card .card-header {
-   width: 100%;
-   margin-bottom: 20px;
+	width: 100%;
+	margin-bottom: 20px;
 }
 
 .card .card-body {
-   width: 100%;
+	width: 100%;
 }
 
 .card .card-body .form-group {
-   display: inline-block;
+	display: inline-block;
 }
 
 .card .card-body .form-group input {
-   width: 100%;
-   padding: 8px;
-   border: 2px solid #333333;
-   outline: none;
+	width: 100%;
+	padding: 8px;
+	border: 2px solid #333333;
+	outline: none;
 }
 
 .card .card-body .form-group input:focus {
-   border-color: #FFCC00;
+	border-color: #FFCC00;
 }
 
 #submit {
-   background-color: #333333;
-   color: #FFCC00;
-   cursor: pointer;
-   transition: all 0.3s ease;
-   padding: 8px 15px;
-   display: block;
-   margin: 12px auto;
+	background-color: #333333;
+	color: #FFCC00;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	padding: 8px 15px;
+	display: block;
+	margin: 12px auto;
 }
 
 .result {
-   width: 100%;
+	width: 100%;
 }
 
 .wrapper {
-   width: 100%;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .temp {
-   display: block;
-   font-size: 25px;
+	display: block;
+	font-size: 25px;
 	font-weight: 600;
 	background-image: linear-gradient(to right, #FFCC00, #B393D3);
 	color: transparent;
@@ -151,7 +151,7 @@ body{
 }
 
 #humidity {
-   font-size: 25px;
+	font-size: 25px;
 	font-weight: 600;
 	background-image: linear-gradient(to right, #FFCC00, #B393D3);
 	color: transparent;
