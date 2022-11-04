@@ -1,0 +1,161 @@
+body{
+	font-size: 18px;
+	background: #333333;
+	color: #FFCC00;
+}
+
+.border {
+	border: 3px solid #FFCC00;
+}
+		
+.mysite{
+	display: flex;
+	flex-direction: column;
+	text-align:center;
+	padding: 50px 100px;
+	}
+	
+.header1{
+	font-size: 50px;
+	font-weight: 600;
+	background-image: linear-gradient(to left, #FFCC00, #333333);
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+}
+
+.header2{
+	font-size: 25px;
+	font-weight: 600;
+	background-image: linear-gradient(to right, #FFCC00, #B393D3);
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+	margin: 20px;
+}
+
+.header3{
+	font-size: 18px;
+	font-weight: 600;  
+	display: inline;
+	border-bottom: 2px solid #FFFFFF;
+}		
+	
+.content{
+	display: flex;
+	flex-direction: row;
+	text-align:center;			
+}
+
+.columnTextLeft{
+	flex: 1;
+	text-align: left;
+	margin-left: 15px;
+}
+
+.columnTextCenter{
+	flex: 1;
+	text-align: center;
+	margin-left: 15px;
+}
+
+.columnTextRight{
+	flex: 1;
+	text-align: right;
+	margin: 15px;
+}
+
+.footer{
+	left: 0; bottom: 0;
+	padding: 10px;
+	background: #7D6F6F;
+	color: #FFCC00;
+	margin: 20px;
+	width: 100%;			
+}
+
+.card {
+   width: 100%;
+   max-width: 350px;
+   border: 3px solid #FFCC00;
+   padding: 15px;
+   display: grid;
+   place-items: center;
+   justify-content: center;
+}
+
+.card .card-header {
+   width: 100%;
+   margin-bottom: 20px;
+}
+
+.card .card-body {
+   width: 100%;
+}
+
+.card .card-body .form-group {
+   display: inline-block;
+}
+
+.card .card-body .form-group input {
+   width: 100%;
+   padding: 8px;
+   border: 2px solid #333333;
+   outline: none;
+}
+
+.card .card-body .form-group input:focus {
+   border-color: #FFCC00;
+}
+
+#submit {
+   background-color: #333333;
+   color: #FFCC00;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   padding: 8px 15px;
+   display: block;
+   margin: 12px auto;
+}
+
+.result {
+   width: 100%;
+}
+
+.wrapper {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.temp {
+   display: block;
+   font-size: 25px;
+	font-weight: 600;
+	background-image: linear-gradient(to right, #FFCC00, #B393D3);
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+	margin: 15px;
+}
+
+#weather {
+	font-size: 25px;
+	font-weight: 600;
+	background-image: linear-gradient(to right, #FFCC00, #B393D3);
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+	margin: 15px;
+}
+
+#humidity {
+   font-size: 25px;
+	font-weight: 600;
+	background-image: linear-gradient(to right, #FFCC00, #B393D3);
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+	margin: 15px;
+}

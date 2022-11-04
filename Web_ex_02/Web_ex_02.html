@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+      <meta charset="utf-8">
+	   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ветвистые заразы</title>
+      <link rel="stylesheet" href="Style.css">
+      <script src="./Weather.js"></script>
+	</head>
+	<body>
+		<div class="mysite">
+			<div class="header1">Ветвистые заразы<img src="Images/00_Grut.png" alt="" height="50"></div>
+			<div class="header2">Информация о существе</div>
+			<div class="content">			
+				<div class="columnTextLeft">
+					<img src="Images/01_TwigBlight.jpg" alt="" height="600"> <br><br>
+					<p class="header3">Описание существа</p><br><br>
+					Когда добычи вокруг недостаточно, ветвистая зараза пускает в почву корни. 
+					В такие моменты они ничем не отличается от обычного сухого кустарника. 
+					Когда же они высвобождают корни из земли для передвижения, ветки переплетаются 
+					друг с другом, формируя человекоподобное тело с головой и конечностями.<br><br>
+					Ветвистая зараза ищет поляны и колодцы, прорастая там, и устраивая засады на 
+					потенциальных жертв, желающих отдохнуть или утолить жажду. 
+					Сбиваясь в группы, зараза сливается с естественной растительностью или грудами мусора или хвороста.<br><br>
+					Ветвистая зараза очень суха, и потому особенно восприимчива к огню.<br><br>
+					Источник: <a href="https://dnd.su/bestiary/1-twig_blight/" target="_blank" style="color: #FFFFFF">Онлайн справочник DnD.su</a>
+				</div>
+				<div class="columnTextLeft"><iframe src="https://dnd.su/bestiary/1-twig_blight/" width="400" style="height:100%;"></iframe></div>
+				<div class="columnTextCenter">		
+               <div class="card">
+                  <div class="card-header">
+                     <div class="header2">Погода</div>
+                  </div>
+                  <div class="card-body">
+                      <div class="form-group">
+                          <input type="text" name="city" id="city" placeholder="Введите название города" value="Saint Petersburg">
+                          <button type="submit" id="submit" onclick="getWeather()">Поиск</button>
+                      </div>
+                  </div>
+                  <div class="result">
+                      <div class="weather">
+                          <div class="wrapper">
+                              <div id="weather"></div>
+                              <div id="weather-image"></div>
+                          </div>
+                          <div class="wrapper">
+                              <div class="temp">
+                                 <div id="temp"></div>
+                              </div>
+                              <div id="humidity"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+			</div>	
+			<div class="header2">Сделанные мной миниатюры</div>
+			<div class="content">
+				<div class="columnTextLeft"><img src="Images/02_TwigBlightsMiniatures.jpg" alt="" width="640"></div>
+				<div class="columnTextLeft">
+					<p class="header3">История</p><br><br>
+					Сделаны мной 24.12.2021г.<br>Первые миниатюры, с которых я начал переделывать модели так, 
+					чтобы они подходили под любое окружение и игровое поле.<br>
+					В 3D редакторе отделялись "базы" и вырезались пазы.<br> 
+					"Базы" напечатаны из прозрачной фотополимерной смолы и покрыты лаком для ногтей в несколько слоёв.<br><br>
+					Больше фотографий процесса создания можно найти в 
+					<a href="https://vk.com/lehapixelpublic?w=wall-214274608_42" target="_blank" style="color: #FFFFFF">источнике</a>.<br><br>
+					<img src="Images/03_3Dmodels.jpg" alt="" width="685">
+				</div>																					
+			</div>
+			<div class="header2">Голосование за тип окраски</div>
+			<div class="content">
+				<div class="columnTextLeft">				
+					<fieldset>
+						<legend>Выберите тип окраски</legend>
+						<form method="post" action="http://localhost/inp/radio">
+							<p>
+								<input type="radio" value="type1" name="subject" checked> Тип №1
+							</p>
+							<p>
+								<input type="radio" value="type2" name="subject"> Тип №2
+							</p>
+							<p>
+								<input type="radio" value="type3" name="subject"> Тип №3
+							</p>
+							<p>
+								<input type="submit" value="Проголосовать">
+							</p>
+						</form>
+					</fieldset>
+				</div>
+				<div class="columnTextCenter"><img src="Images/04_Miniatures_01.jpg" alt="" class="border" width="400"><br> Тип №1</div>
+				<div class="columnTextCenter"><img src="Images/05_Miniatures_02.jpg" alt="" class="border" width="400"><br> Тип №2</div>
+				<div class="columnTextCenter"><img src="Images/06_Miniatures_03.jpg" alt="" class="border" width="400"><br> Тип №3</div>
+			</div>
+			<div class="footer">
+				<div class="content">
+					<div class="columnTextLeft"><img src="Images/07_LehaPixel.jpg" alt="" width="50">&copy; LehaPixel</div>
+					<div class="columnTextRight">
+						<a href="mailto:katunin96@mail.ru"><img src="Images/08_Email.png" alt="" width="35"></a>
+						<a href="https://vk.com/lehapixelpublic" target="_blank"><img src="Images/09_VK.png" alt="" width="35"></a>
+						<a href="https://www.instagram.com/lehapixel/" target="_blank"><img src="Images/10_Instagram.png" alt="" width="35"></a>
+						<a href="https://github.com/lehapixel" target="_blank"><img src="Images/11_GitHub.png" alt="" width="35"></a>
+						<a href="https://www.twitch.tv/lehapixel" target="_blank"><img src="Images/12_Twitch.png" alt="" width="35"></a> 
+					</div>
+				</div>
+			</div> 
+      </div>    
+	</body>
+</html>
