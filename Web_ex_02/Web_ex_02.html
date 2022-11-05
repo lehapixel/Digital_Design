@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-      <meta charset="utf-8">
-	   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Ветвистые заразы</title>
-      <link rel="stylesheet" href="Style.css">
-      <script src="./Weather.js"></script>
+<html type="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Ветвистые заразы</title>
+		<link rel="stylesheet" href="Style.css">
+		<script src="./Weather.js"></script>
 	</head>
 	<body>
 		<div class="mysite">
@@ -27,32 +27,32 @@
 				</div>
 				<div class="columnTextLeft"><iframe src="https://dnd.su/bestiary/1-twig_blight/" width="400" style="height:100%;"></iframe></div>
 				<div class="columnTextCenter">		
-               <div class="card">
-                  <div class="card-header">
-                     <div class="header2">Погода</div>
-                  </div>
-                  <div class="card-body">
-                      <div class="form-group">
-                          <input type="text" name="city" id="city" placeholder="Введите название города" value="Saint Petersburg">
-                          <button type="submit" id="submit" onclick="getWeather()">Поиск</button>
-                      </div>
-                  </div>
-                  <div class="result">
-                      <div class="weather">
-                          <div class="wrapper">
-                              <div id="weather"></div>
-                              <div id="weather-image"></div>
-                          </div>
-                          <div class="wrapper">
-                              <div class="temp">
-                                 <div id="temp"></div>
-                              </div>
-                              <div id="humidity"></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-            </div>
+					<div class="card">
+						<div class="card-header">
+							<div class="header2">Погода</div>
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<input type="text" name="city" id="city" placeholder="Введите название города" value="Saint Petersburg">
+								<button type="submit" id="submit" onclick="getWeather()">Поиск</button>
+							</div>
+						</div>
+						<div class="result">
+							<div class="weather">
+								<div class="wrapper">
+									<div id="weather"></div>
+									<div id="weather-image"></div>
+								</div>
+								<div class="wrapper">
+									<div class="temp">
+									<div id="temp"></div>
+									</div>
+									<div id="humidity"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>	
 			<div class="header2">Сделанные мной миниатюры</div>
 			<div class="content">
@@ -70,7 +70,7 @@
 			</div>
 			<div class="header2">Голосование за тип окраски</div>
 			<div class="content">
-				<div class="columnTextLeft">				
+				<div class="columnTextLeft">
 					<fieldset>
 						<legend>Выберите тип окраски</legend>
 						<form method="post" action="http://localhost/inp/radio">
@@ -105,6 +105,6 @@
 					</div>
 				</div>
 			</div> 
-      </div>    
+		</div>    
 	</body>
 </html>

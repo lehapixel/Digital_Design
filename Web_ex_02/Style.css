@@ -4,7 +4,7 @@ body{
 	color: #FFCC00;
 }
 
-.border {
+.border{
 	border: 3px solid #FFCC00;
 }
 	
@@ -74,7 +74,7 @@ body{
 	width: 100%;			
 }
 
-.card {
+.card{
 	width: 100%;
 	max-width: 350px;
 	border: 3px solid #FFCC00;
@@ -84,31 +84,31 @@ body{
 	justify-content: center;
 }
 
-.card .card-header {
+.card .card-header{
 	width: 100%;
 	margin-bottom: 20px;
 }
 
-.card .card-body {
+.card .card-body{
 	width: 100%;
 }
 
-.card .card-body .form-group {
+.card .card-body .form-group{
 	display: inline-block;
 }
 
-.card .card-body .form-group input {
+.card .card-body .form-group input{
 	width: 100%;
 	padding: 8px;
 	border: 2px solid #333333;
 	outline: none;
 }
 
-.card .card-body .form-group input:focus {
+.card .card-body .form-group input:focus{
 	border-color: #FFCC00;
 }
 
-#submit {
+#submit{
 	background-color: #333333;
 	color: #FFCC00;
 	cursor: pointer;
@@ -118,18 +118,18 @@ body{
 	margin: 12px auto;
 }
 
-.result {
+.result{
 	width: 100%;
 }
 
-.wrapper {
+.wrapper{
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.temp {
+.temp{
 	display: block;
 	font-size: 25px;
 	font-weight: 600;
@@ -140,7 +140,7 @@ body{
 	margin: 15px;
 }
 
-#weather {
+#weather{
 	font-size: 25px;
 	font-weight: 600;
 	background-image: linear-gradient(to right, #FFCC00, #B393D3);
@@ -150,7 +150,7 @@ body{
 	margin: 15px;
 }
 
-#humidity {
+#humidity{
 	font-size: 25px;
 	font-weight: 600;
 	background-image: linear-gradient(to right, #FFCC00, #B393D3);
