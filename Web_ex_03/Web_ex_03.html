@@ -95,7 +95,7 @@
 									this.handleSubmit = this.handleSubmit.bind(this);              
 								}
 							
-								handleChange = (event) => {
+								handleChange(event){
 									const id = parseInt(event.target.value);
 									this.state.paintTypes.forEach((paintType, index, paintTypes) => {
 										if (paintType.id === id) {
@@ -107,7 +107,7 @@
 									this.setState({paintType: event.target.value});
 								}
 
-								handleSubmit = (event) => {                                                      
+								handleSubmit(event){                                                      
 									event.preventDefault();
 									alert(`Вы проголосовали за Тип №${this.state.paintType}`);   
 								}
@@ -127,7 +127,7 @@
 													</label>
 												</ul>
 											)}								
-											<button type="submit" className="submit-button">Проголосовать</button>								
+											<input type="submit" value="Проголосовать"/>								
 										</form>
 									);
 								}
