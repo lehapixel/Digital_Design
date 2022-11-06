@@ -85,10 +85,10 @@
 
 									this.state = {
 										paintTypes: [
-                                        {id: 1, value: 'Тип №1', checked: false},
-                                        {id: 2, value: 'Тип №2', checked: false},
-                                        {id: 3, value: 'Тип №3', checked: false},                                    
-                                        ]
+										{id: 1, value: 'Тип №1', checked: false},
+										{id: 2, value: 'Тип №2', checked: false},
+										{id: 3, value: 'Тип №3', checked: false},                                    
+										]
 									};
 
 									this.handleChange = this.handleChange.bind(this);
@@ -96,15 +96,15 @@
 								}
 							
 								handleChange = (event) => {
-                                    const id = parseInt(event.target.value);
+									const id = parseInt(event.target.value);
 									this.state.paintTypes.forEach((paintType, index, paintTypes) => {
-                                        if (paintType.id === id) {
-                                            paintTypes[index].checked = true;
-                                        } else {
-                                            paintTypes[index].checked = false;
-                                        }
-                                    });
-                                    this.setState({paintType: event.target.value});
+										if (paintType.id === id) {
+											paintTypes[index].checked = true;
+										} else {
+											paintTypes[index].checked = false;
+										}
+									});
+									this.setState({paintType: event.target.value});
 								}
 
 								handleSubmit = (event) => {                                                      
@@ -115,18 +115,18 @@
 								render() {
 									return (
 										<form onSubmit={this.handleSubmit}>									 									
-                                            {this.state.paintTypes.map(paintType =>
-                                                <ul>
-                                                    <label key={paintType.id}>
-                                                        <input
-                                                            type="radio"
-                                                            value={paintType.id}
-                                                            checked={paintType.checked}
-                                                            onChange={this.handleChange}
-                                                        /> {paintType.value}
-                                                    </label>
-                                                </ul>
-                                            )}								
+											{this.state.paintTypes.map(paintType =>
+												<ul>
+													<label key={paintType.id}>
+														<input
+															type="radio"
+															value={paintType.id}
+															checked={paintType.checked}
+															onChange={this.handleChange}
+														/> {paintType.value}
+													</label>
+												</ul>
+											)}								
 											<button type="submit" className="submit-button">Проголосовать</button>								
 										</form>
 									);
